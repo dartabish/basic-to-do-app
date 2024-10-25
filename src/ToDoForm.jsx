@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useGlobalContext } from './Context';
 
 const ToDoForm = () => {
-  const { toDos, addToDo } = useGlobalContext();
+  const { addToDo } = useGlobalContext();
   const [value, setValue] = useState('');
 
   const handleSubmit = e => {
@@ -14,7 +14,7 @@ const ToDoForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex' }}>
       <input
         type="text"
         value={value}

@@ -1,25 +1,15 @@
 import { useGlobalContext } from './Context';
+import SingleItem from './SingleItem';
 
 const ToDoList = () => {
-  const { toDos, toggleCompleted } = useGlobalContext();
+  const { toDos, removeToDo } = useGlobalContext();
   return (
-    <div>
-      {toDos.map((toDo, index) => {
-        const { text, isCompleted } = toDo;
-        return (
-          <li
-            key={index}
-            style={{
-              cursor: 'pointer',
-              textDecoration: isCompleted ? 'line-through' : 'none',
-            }}
-            onClick={() => toggleCompleted(index)}
-          >
-            {text}
-          </li>
-        );
+    <div className="items">
+      {toDos.map(toDo => {
+        return <SingleItem key={toDo.id} toDo={toDo} />;
       })}
     </div>
   );
 };
+
 export default ToDoList;
